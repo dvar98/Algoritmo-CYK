@@ -2,7 +2,7 @@
 
 Este repositorio contiene una implementación del **algoritmo CYK** en Python para determinar si una cadena pertenece al lenguaje definido por una gramática libre de contexto en forma normal de Chomsky.
 
-##Gráfica que representa el crecimiento del **algoritmo CYK**
+# Gráfica que representa el crecimiento del **algoritmo CYK**
 
 ![{05E607C0-09D3-4B75-9832-4C2C29EE82E2}](https://github.com/user-attachments/assets/f3b043f1-4b2e-4025-a448-b397d4c5d740)
 
