@@ -2,6 +2,21 @@
 
 Este repositorio contiene una implementación del **algoritmo CYK** en Python para determinar si una cadena pertenece al lenguaje definido por una gramática libre de contexto en forma normal de Chomsky.
 
+##Gráfica que representa el crecimiento del **algoritmo CYK**
+
+![{05E607C0-09D3-4B75-9832-4C2C29EE82E2}](https://github.com/user-attachments/assets/f3b043f1-4b2e-4025-a448-b397d4c5d740)
+
+la gráfica que muestra el crecimiento cúbico del tiempo de ejecución del algoritmo CYK, representado por la función 
+𝑂
+(
+𝑛
+3
+).
+Como se puede observar, a medida que la longitud de la cadena de entrada 
+𝑛
+aumenta, el número de operaciones crece de manera rápida, destacando la naturaleza cúbica del algoritmo.
+
+
 ## Implementación
 
 El archivo `cyk_algorithm.py` contiene la implementación del algoritmo CYK. La gramática utilizada incluye producciones terminales y no terminales, y puede probar diferentes cadenas y gramáticas.
