@@ -16,6 +16,39 @@ Como se puede observar, a medida que la longitud de la cadena de entrada
 𝑛
 aumenta, el número de operaciones crece de manera rápida, destacando la naturaleza cúbica del algoritmo.
 
+# Demostración matematica
+
+El algoritmo CYK es un método eficiente para determinar si una cadena pertenece a un lenguaje generado por una gramática libre de contexto en forma normal de Chomsky (CNF).
+
+## Descripción
+
+1. **Gramática en CNF**: La gramática debe tener reglas de la forma:
+   - \( A → BC \)
+   - \( A → a \)
+
+2. **Matriz \( T \)**: Utiliza una matriz triangular \( T[i,j] \) donde cada entrada contiene las variables que generan el substring \( w_i, ..., w_j \).
+
+## Procedimiento
+
+- **Base**: Para substrings de longitud 1:
+  \[
+  T[i,i] = \{A ∣ A → w_i\}
+  \]
+
+- **Caso recursivo**: Para substrings de longitud \( > 1 \):
+  \[
+  T[i,j] = T[i,j] ∪ \{A ∣ A → BC, B ∈ T[i,k], C ∈ T[k+1,j]\}
+  \]
+
+## Verificación
+
+La cadena \( w \) es aceptada si \( S ∈ T[1,n] \), donde \( S \) es el símbolo inicial de la gramática.
+
+## Complejidad
+
+La complejidad temporal es \( O(n^3 ⋅ |G|) \), donde \( n \) es la longitud de la cadena y \( |G| \) es el tamaño de la gramática.
+
+
 
 ## Implementación
 
