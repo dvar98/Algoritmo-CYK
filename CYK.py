@@ -1,6 +1,19 @@
 import time
+from tabulate import tabulate
+
 
 def cyk_algorithm(grammar, string):
+    """
+    Implementación del algoritmo CYK para verificar si una cadena pertenece a un lenguaje generado por una gramática en forma normal de Chomsky.
+
+    Args:
+        grammar (list): Gramática en forma normal de Chomsky, donde cada regla es una tupla (lhs, rhs) con lhs como símbolo no terminal y rhs como lista de símbolos terminales o no terminales.
+        string (str): Cadena de entrada a verificar.
+
+    Returns:
+        list: Tabla CYK.
+    """
+
     n = len(string)
     r = len(grammar)  # Número de reglas en la gramática
 
@@ -22,8 +35,8 @@ def cyk_algorithm(grammar, string):
                     if len(rhs) == 2 and rhs[0] in table[i][k] and rhs[1] in table[k+1][j]:
                         table[i][j].add(lhs)
 
-    # Verificar si el símbolo inicial está en la última celda
-    return 'S' in table[0][n-1]
+    return table
+
 
 # Ejemplo de gramática en CNF
 grammar = [
@@ -37,13 +50,26 @@ grammar = [
     ('C', ['a']),
 ]
 
+ 
 # Cadena de prueba
 string = "baaba"
 
+
 # Medir el tiempo de ejecución
 start_time = time.time()
-result = cyk_algorithm(grammar, string)
+table = cyk_algorithm(grammar, string)
 end_time = time.time()
 
-print(f"Resultado: {result}")
+
+print("Tabla CYK:")
+table_str = [["-" for _ in range(len(string))] for _ in range(len(string))]
+for i in range(len(string)):
+    for j in range(len(string)):
+        if table[i][j]:
+            table_str[i][j] = ", ".join(sorted(table[i][j]))
+print(tabulate(table_str, tablefmt="grid"))
+
+
+print("\nResultado:")
+print(f"  La cadena '{string}' pertenece al lenguaje: {'S' in table[0][len(string)-1]}")
 print(f"Tiempo de ejecución: {end_time - start_time:.6f} segundos")
